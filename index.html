@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillUp - Yeni Nesil Öğrenme Platformu</title>
+    
+    <meta name="description" content="SkillUp ile programlama, tasarım, veri bilimi ve daha fazlasını öğrenin. 50K+ öğrenci, 200+ kurs, %98 memnuniyet oranı. Hemen ücretsiz kaydolun!">
+    <meta name="keywords" content="online eğitim, kurs, programlama, web geliştirme, veri bilimi, UI/UX, yapay zeka, siber güvenlik">
+    <meta name="author" content="M.Y. Studios">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SkillUp - Yeni Nesil Öğrenme Platformu">
+    <meta property="og:description" content="Modern öğrenme deneyimi ile kariyerinizi yükseltin. 200+ kurs, uzman eğitmenler, sertifika programları.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/8b5cf6/ffffff?text=SkillUp">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SkillUp - Yeni Nesil Öğrenme Platformu">
+    <meta name="twitter:description" content="Modern öğrenme deneyimi ile kariyerinizi yükseltin.">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo" onclick="scrollToTop()">
+                <img src="images/logo.png" alt="SkillUp Logo" class="logo-img">
+                <span class="logo-text">SkillUp</span>
+            </div>
+            
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Menü">
+                ☰
+            </button>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="scrollToTop()">Anasayfa</a></li>
+                    <li><a href="#courses">Eğitimler</a></li>
+                    <li><a href="#why">Neden SkillUp</a></li>
+                    <li><a href="javascript:void(0)" onclick="openModal('aboutModal')">Hakkımızda</a></li>
+                    <li><a href="javascript:void(0)" onclick="openModal('contactModal')">İletişim</a></li>
+                    
+                    <div class="search-bar" style="position: relative;">
+                        🔍 <input type="text" placeholder="Kurs Ara..." id="searchInput" onkeyup="handleSearch(event)">
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                    
+                    <div id="authGroup" class="auth-buttons">
+                        <button class="btn-login" onclick="openModal('loginModal')">Giriş Yap</button>
+                        <button class="btn-signup" onclick="openModal('signupModal')">Kayıt Ol</button>
+                    </div>
+                    
+                    <div id="userProfile" class="user-profile" onclick="openProfileModal()" style="cursor: pointer;">
+                        <span id="userWelcome">Hoş geldin!</span>
+                        <div class="user-avatar" id="userAvatar">MK</div>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="hero-title">
+                <span>S</span><span>k</span><span>i</span><span>l</span><span>l</span><span>U</span><span>P</span><br><span>Y</span><span>a</span><span>n</span><span>ı</span><span>n</span><span>d</span><span>a</span><br><span>B</span><span>i</span><span>l</span><span>g</span><span>i</span> <span>H</span><span>e</span><span>r</span> <span>A</span><span>n</span><span>ı</span><span>n</span><span>d</span><span>a</span>
+            </h1>
+            <a href="#courses" class="hero-btn">Eğitime Başla 🚀</a>
+        </section>
+
+        <section class="partners">
+            <div class="partner-logos">
+                <span>Google</span> <span>IBM</span> <span>Microsoft</span> <span>Meta</span> <span>Amazon</span>
+            </div>
+            <p class="partner-text">ÖĞRENCİLERİMİZİN EN SON TEKNOLOJİLERLE ÇALIŞARAK BAŞARILI OLMALARINI SAĞLAMAK İÇİN SEKTÖR LİDERLERİ VE AKADEMİSYENLERLE İŞ BİRLİĞİ YAPIYORUZ.</p>
+        </section>
+
+        <section id="courses" class="courses">
+            <h2 class="section-header">Popüler Kurslar</h2>
+            <div class="course-grid">
+                <div class="course-card" onclick="checkCourseAccess('Web Geliştirme Masterclass')">
+                    <div class="course-img">💻</div>
+                    <div class="course-info">
+                        <h3 class="course-title">Web Geliştirme Masterclass</h3>
+                        <p class="course-desc">HTML, CSS, JavaScript ve modern framework'lerle profesyonel web siteleri geliştirin.</p>
+                        <div class="course-tag"><span>👥 12,450 Öğrenci</span></div>
+                    </div>
+                </div>
+                <div class="course-card" onclick="checkCourseAccess('UI/UX Tasarım Temelleri')">
+                    <div class="course-img">🎨</div>
+                    <div class="course-info">
+                        <h3 class="course-title">UI/UX Tasarım Temelleri</h3>
+                        <p class="course-desc">Kullanıcı deneyimi odaklı modern arayüzler tasarlamayı öğrenin.</p>
+                        <div class="course-tag"><span>👥 8,320 Öğrenci</span></div>
+                    </div>
+                </div>
+                <div class="course-card" onclick="checkCourseAccess('Veri Bilimi & Analitik')">
+                    <div class="course-img">📊</div>
+                    <div class="course-info">
+                        <h3 class="course-title">Veri Bilimi & Analitik</h3>
+                        <p class="course-desc">Python ile veri analizi, görselleştirme ve makine öğrenimi tekniklerini keşfedin.</p>
+                        <div class="course-tag"><span>👥 15,680 Öğrenci</span></div>
+                    </div>
+                </div>
+                <div class="course-card" onclick="checkCourseAccess('Mobil Uygulama Geliştirme')">
+                    <div class="course-img">📱</div>
+                    <div class="course-info">
+                        <h3 class="course-title">Mobil Uygulama Geliştirme</h3>
+                        <p class="course-desc">React Native ile iOS ve Android için cross-platform uygulamalar oluşturun.</p>
+                        <div class="course-tag"><span>👥 9,240 Öğrenci</span></div>
+                    </div>
+                </div>
+                <div class="course-card" onclick="checkCourseAccess('Yapay Zeka ve Deep Learning')">
+                    <div class="course-img">🤖</div>
+                    <div class="course-info">
+                        <h3 class="course-title">Yapay Zeka ve Deep Learning</h3>
+                        <p class="course-desc">TensorFlow ve PyTorch ile yapay zeka modelleri geliştirmeyi öğrenin.</p>
+                        <div class="course-tag"><span>👥 11,890 Öğrenci</span></div>
+                    </div>
+                </div>
+                <div class="course-card" onclick="checkCourseAccess('Siber Güvenlik Temelleri')">
+                    <div class="course-img">🔒</div>
+                    <div class="course-info">
+                        <h3 class="course-title">Siber Güvenlik Temelleri</h3>
+                        <p class="course-desc">Ağ güvenliği, ethical hacking ve güvenlik testleri konularında uzmanlaşın.</p>
+                        <div class="course-tag"><span>👥 7,560 Öğrenci</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why" class="features">
+            <h2 class="section-header">Neden SkillUp?</h2>
+            <div class="feature-grid">
+                <div class="feature-card" onclick="openFeatureDetail('expert')" style="cursor: pointer;"><span class="feature-icon">🎓</span><h3>Uzman Eğitmenler</h3><p>Alanında deneyimli, sektörün lider isimlerinden öğrenin.</p></div>
+                <div class="feature-card" onclick="openFeatureDetail('flexible')" style="cursor: pointer;"><span class="feature-icon">⏰</span><h3>Esnek Öğrenme</h3><p>Kendi hızınızda, istediğiniz zaman ve yerde öğrenin.</p></div>
+                <div class="feature-card" onclick="openFeatureDetail('certificate')" style="cursor: pointer;"><span class="feature-icon">📜</span><h3>Sertifika</h3><p>Kursu tamamladığınızda sektör onaylı sertifika kazanın.</p></div>
+                <div class="feature-card" onclick="openFeatureDetail('community')" style="cursor: pointer;"><span class="feature-icon">💬</span><h3>Topluluk Desteği</h3><p>Binlerce öğrenci ve mentorla etkileşimde bulunun.</p></div>
+                <div class="feature-card" onclick="openFeatureDetail('mobile')" style="cursor: pointer;"><span class="feature-icon">📱</span><h3>Mobil Erişim</h3><p>Tüm cihazlarınızdan kurslara erişim sağlayın.</p></div>
+                <div class="feature-card" onclick="openFeatureDetail('updates')" style="cursor: pointer;"><span class="feature-icon">🔄</span><h3>Sürekli Güncelleme</h3><p>İçerikler düzenli olarak güncellenerek güncel kalır.</p></div>
+                <div class="feature-card" onclick="openFeatureDetail('format')" style="cursor: pointer;"><span class="feature-icon">🎬</span><h3>Format Üstünlüğü</h3><p>Dikey video formatı ile modern ve akıcı öğrenme deneyimi.</p></div>
+                <div class="feature-card" onclick="openFeatureDetail('personal')" style="cursor: pointer;"><span class="feature-icon">🎯</span><h3>Kişisel İçerikler</h3><p>Size özel önerileri ve kişiselleştirilmiş öğrenme yolları.</p></div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="testimonials-container">
+                <div class="testimonials-header">
+                    <h2 class="testimonials-title">Öğrencilerimiz Ne Diyor?</h2>
+                    <p class="testimonials-subtitle">Binlerce kullanıcı SkillUp ile kariyerini dönüştürdü</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="testimonial-quote">
+                            Otobüste geçirdiğim 15 dakikayı mikro modüllerle değerlendirip Python sertifikamı aldım. İnanılmaz verimli!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">E</div>
+                            <div class="author-info">
+                                <div class="author-name">Elif</div>
+                                <div class="author-title">Yazılım Geliştirici</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="testimonial-quote">
+                            Geleneksel kurslarda sıkılıp bırakıyordum, SkillUp'ın dikey videoları TikTok izlemek kadar akıcı.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">A</div>
+                            <div class="author-info">
+                                <div class="author-name">Arda</div>
+                                <div class="author-title">Dijital Pazarlama Uzmanı</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="testimonial-quote">
+                            Blockchain onaylı sertifikamı LinkedIn'de paylaştığım gün iş görüşmesi teklifi aldım. Teşekkürler SkillUp!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">S</div>
+                            <div class="author-info">
+                                <div class="author-name">Selin</div>
+                                <div class="author-title">Ürün Tasarımcısı</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="loadMoreTestimonials" class="load-more-btn" onclick="loadMoreTestimonials()">
+                        Daha Fazla Yorum Gör ▼
+                    </button>
+                    <button id="hideMoreTestimonials" class="load-more-btn" onclick="hideMoreTestimonials()" style="display: none; margin-left: 1rem;">
+                        Yorumları Gizle ▲
+                    </button>
+                </div>
+                
+                <div class="testimonials-grid" id="moreTestimonials" style="display: none; margin-top: 2rem;">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="testimonial-quote">
+                            UI/UX kursu sayesinde freelance olarak çalışmaya başladım. İlk ayımda kurs ücretinin 3 katını kazandım!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">M</div>
+                            <div class="author-info">
+                                <div class="author-name">Mert</div>
+                                <div class="author-title">UI/UX Designer</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="testimonial-quote">
+                            Veri bilimi kursunu tamamladıktan sonra şirket içi terfi aldım. SkillUp kariyerime yön verdi!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">Z</div>
+                            <div class="author-info">
+                                <div class="author-name">Zeynep</div>
+                                <div class="author-title">Data Analyst</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="testimonial-quote">
+                            Yapay zeka kursundaki gerçek proje örnekleri inanılmazdı. Şimdi kendi AI projem üzerinde çalışıyorum!
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">K</div>
+                            <div class="author-info">
+                                <div class="author-name">Kaan</div>
+                                <div class="author-title">AI Developer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing-section">
+            <h2 class="section-header">Üyelik Planları</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                İster tek tek kurs alın, ister sınırsız erişim ile kariyerinizi hızlandırın.
+            </p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Başlangıç</h3>
+                        <div class="plan-price">Ücretsiz</div>
+                        <p class="plan-desc">Platformu keşfetmek isteyenler için.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li>✅ Ücretsiz Dersler</li>
+                        <li>✅ Topluluk Erişimi</li>
+                        <li>✅ Mobil Uygulama</li>
+                        <li class="disabled">❌ Sertifika Yok</li>
+                        <li class="disabled">❌ Mentor Desteği Yok</li>
+                    </ul>
+                    <button class="pricing-btn outline" onclick="openModal('signupModal')">Ücretsiz Başla</button>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">EN POPÜLER</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">Pro Üyelik</h3>
+                        <div class="plan-price">₺199<span>/ay</span></div>
+                        <p class="plan-desc">Kariyerini değiştirmek isteyenler için.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li>✅ <strong>Tüm Kurslara</strong> Erişim</li>
+                        <li>✅ Blockchain Sertifikaları</li>
+                        <li>✅ Mentor Desteği</li>
+                        <li>✅ İndirilebilir Kaynaklar</li>
+                        <li>✅ Reklamsız Deneyim</li>
+                    </ul>
+                    <button class="pricing-btn primary" onclick="openModal('signupModal')">Pro Ol 🚀</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Takım</h3>
+                        <div class="plan-price">₺1499<span>/yıl</span></div>
+                        <p class="plan-desc">Şirketler ve ekipler için.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li>✅ 5 Kişilik Lisans</li>
+                        <li>✅ Takım İlerleme Raporları</li>
+                        <li>✅ Kurumsal Fatura</li>
+                        <li>✅ Özel Müşteri Temsilcisi</li>
+                        <li>✅ API Erişimi</li>
+                    </ul>
+                    <button class="pricing-btn outline" onclick="openModal('contactModal')">Teklif Al</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq">
+            <h2 class="section-header">Sıkça Sorulan Sorular</h2>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Videolar çok mu uzun? <div class="plus-icon">+</div></div>
+                <div class="faq-a">Hayır, SkillUp günümüzün dikkat süresine tam uyumlu, 2-10 dakikalık dikey video modüllerinden oluşur.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Sertifikalar iş hayatında geçerli mi? <div class="plus-icon">+</div></div>
+                <div class="faq-a">Tüm sertifikalarımız Blockchain altyapısı ile korunur ve işveren onaylıdır.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">Klasik kurslardan farkı nedir? <div class="plus-icon">+</div></div>
+                <div class="faq-a">Geleneksel platformlarda tamamlama oranı %20 iken, SkillUp'ın mikro öğrenme yapısı ile bu oran %80'e ulaşmaktadır.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">İçerik üreticisi olarak kazanılabilir mi? <div class="plus-icon">+</div></div>
+                <div class="faq-a">"Creator-First" ekosistemimizde, en iyi üreticilere %80'e varan gelir payı sunarak sürdürülebilir bir büyüme sağlıyoruz.</div>
+            </div>
+        </section>
+    </main>
+
+    <div id="chatbotToggle" class="chatbot-toggle" onclick="toggleChatbot()" title="SkillUp Asistan">
+        💬
+    </div>
+    <div id="chatbotWindow" class="chatbot-window" aria-label="SkillUp Asistan">
+        <div class="chatbot-header">
+            <span>🤖 SkillUp Asistan</span>
+            <button class="chatbot-close" onclick="toggleChatbot()" aria-label="Kapat">✕</button>
+        </div>
+        <div id="chatbotMessages" class="chatbot-messages">
+            <div class="bot-msg">Merhaba! 👋 Size nasıl yardımcı olabilirim?<br><br>Örnek sorular:<br>• "Web geliştirme kursu"<br>• "Frontend geliştirici olmak istiyorum"<br>• "Abonelik fiyatları"<br>• "Sertifika nasıl alınır?"</div>
+        </div>
+        <div class="chatbot-input">
+            <input id="chatbotInput" type="text" placeholder="Mesajınızı yazın..." aria-label="Mesaj">
+            <button class="chatbot-send" onclick="sendChatMessage()" aria-label="Gönder">📤</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">SKILLUP</div>
+                    <p class="footer-description">
+                        Öğrenmeyi eğlenceli hale getiren yeni nesil eğitim platformu.
+                    </p>
+                </div>
+
+                <div class="footer-quick-links">
+                    <h4 class="footer-section-title">Hızlı Linkler</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#" onclick="scrollToTop(); return false;">Anasayfa</a></li>
+                        <li><a href="#courses">Kurslar</a></li>
+                        <li><a href="#why">Neden SkillUp</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('aboutModal')">Hakkımızda</a></li>
+                        <li><a href="#pricing">Abonelik</a></li>
+                        <li><a href="#faq">SSS</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4 class="footer-newsletter-title">
+                        Yeni nesil mikro-öğrenme içerikleri için abone olun
+                    </h4>
+                    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                        <input 
+                            type="email" 
+                            placeholder="E-mail adresiniz" 
+                            class="newsletter-input"
+                            required
+                            id="newsletterEmail"
+                        >
+                        <button 
+                            type="submit" 
+                            class="newsletter-button"
+                        >
+                            Gönder
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 SkillUp. Tüm hakları saklıdır.</p>
+                <div class="footer-links">
+                    <a href="javascript:void(0)" onclick="openModal('privacyModal')" class="footer-link">Gizlilik Politikası</a>
+                    <a href="javascript:void(0)" onclick="openModal('termsModal')" class="footer-link">Kullanım Koşulları</a>
+                    <a href="javascript:void(0)" onclick="openModal('contactModal')" class="footer-link">İletişim</a>
+                    <a href="javascript:void(0)" onclick="openModal('aboutModal')" class="footer-link">Hakkımızda</a>
+                    <a href="javascript:void(0)" onclick="openModal('careerModal')" class="footer-link">Kariyer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Giriş Yap</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label>Kullanıcı Adı</label>
+                    <input type="text" placeholder="Kullanıcı adınız" required id="loginUsername">
+                </div>
+                <div class="input-group">
+                    <label>Şifre</label>
+                    <input type="password" placeholder="••••••••" required id="loginPassword">
+                </div>
+                <button class="modal-btn">Giriş Yap</button>
+                <div class="switch-modal">
+                    Hesabın yok mu? <a onclick="switchModal('loginModal', 'signupModal')">Kayıt Ol</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="signupModal" class="modal-overlay">
+        <div class="modal">
+            <span class="close-modal" onclick="closeModal('signupModal')">&times;</span>
+            <h2>Kayıt Ol</h2>
+            <form onsubmit="handleSignup(event)">
+                <div class="input-group">
+                    <label>Ad Soyad</label>
+                    <input type="text" placeholder="Adınız Soyadınız" required id="signupName">
+                </div>
+                <div class="input-group">
+                    <label>E-posta</label>
+                    <input type="email" placeholder="ornek@email.com" required id="signupEmail">
+                </div>
+                <div class="input-group">
+                    <label>Kullanıcı Adı</label>
+                    <input type="text" placeholder="Kullanıcı adınız" required id="signupUsername">
+                </div>
+                <div class="input-group">
+                    <label>Şifre</label>
+                    <input type="password" placeholder="••••••••" required id="signupPassword" minlength="6">
+                </div>
+                <button class="modal-btn">Ücretsiz Kayıt Ol</button>
+                <div class="switch-modal">
+                    Zaten üye misin? <a onclick="switchModal('signupModal', 'loginModal')">Giriş Yap</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="courseModal" class="modal-overlay">
+        <div class="modal" style="text-align:center;">
+            <span class="close-modal" onclick="closeModal('courseModal')">&times;</span>
+            <div id="c-icon" style="font-size:3rem; margin-bottom:1rem;">🚀</div>
+            <h2 id="c-title">Kurs Detayları</h2>
+            <p id="c-desc" style="color:#6b7280; margin-bottom:1.5rem;">İçerik yükleniyor...</p>
+            <button id="c-btn" class="modal-btn" onclick="switchModal('courseModal', 'loginModal')">Giriş Yap ve Satın Al</button>
+        </div>
+    </div>
+
+    <div id="profileModal" class="modal-overlay">
+        <div class="modal profile-modal">
+            <span class="close-modal" onclick="closeModal('profileModal')">&times;</span>
+            <div class="profile-header">
+                <div class="profile-avatar-large" id="profileAvatarLarge">MK</div>
+                <h2 id="profileName">Kullanıcı Adı</h2>
+                <p style="color: #6b7280; font-size: 0.9rem;" id="profileEmail">user@email.com</p>
+            </div>
+            
+            <div class="profile-section">
+                <h3>📋 Hesap Bilgileri</h3>
+                <div class="profile-info-grid">
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Kullanıcı Adı:</span>
+                        <span class="profile-info-value" id="profileUsername">-</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Üyelik Tarihi:</span>
+                        <span class="profile-info-value" id="profileJoinDate">-</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Toplam Kurs:</span>
+                        <span class="profile-info-value" id="profileCourseCount">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>🎓 Kurslarım</h3>
+                <div id="profileCoursesList"></div>
+            </div>
+            
+            <button class="modal-btn" onclick="logout()" style="background: #ef4444;">🚪 Çıkış Yap</button>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="modal-overlay">
+        <div class="modal about-modal">
+            <span class="close-modal" onclick="closeModal('aboutModal')">&times;</span>
+            <h2>Hakkımızda</h2>
+            <div class="about-content">
+                <p><strong>SkillUp</strong>, modern öğrenme deneyimini yeniden tanımlayan, yeni nesil bir eğitim platformudur. 2025 yılında kurulan platformumuz, teknolojiyi ve eğitimi bir araya getirerek herkesin erişebileceği kaliteli içerikler sunmayı amaçlamaktadır.</p>
+                
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Aktif Öğrenci</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Kurs</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Memnuniyet</div>
+                    </div>
+                </div>
+
+                <h3>🎯 Misyonumuz</h3>
+                <p>Öğrenmeyi herkes için erişilebilir, eğlenceli ve etkili hale getirmek. Geleneksel eğitim yöntemlerinin ötesine geçerek, mikro-öğrenme modülleri ve interaktif içeriklerle bilgiyi hayatın her anına taşıyoruz.</p>
+
+                <h3>✨ Neden Bizi Seçmelisiniz?</h3>
+                <ul>
+                    <li><strong>Uzman Eğitmenler:</strong> Sektörün en deneyimli isimleriyle çalışıyoruz</li>
+                    <li><strong>Esnek Öğrenme:</strong> Kendi hızınızda, istediğiniz zaman öğrenin</li>
+                    <li><strong>Sertifika:</strong> Tamamladığınız her kurs için geçerli sertifika</li>
+                    <li><strong>Topluluk Desteği:</strong> 50.000+ öğrenci topluluğuna katılın</li>
+                    <li><strong>Güncel İçerik:</strong> Sürekli güncellenen, sektörel içerikler</li>
+                </ul>
+
+                <h3>🚀 Vizyonumuz</h3>
+                <p>2030 yılına kadar Türkiye'nin en büyük online eğitim platformu olmak ve dünya çapında 1 milyon öğrenciye ulaşmak.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal contact-modal">
+            <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
+            <h2>📧 Bize Ulaşın</h2>
+            <div class="contact-info">
+                <p>Sorularınız, önerileriniz veya işbirliği teklifleriniz için bize ulaşabilirsiniz.</p>
+            </div>
+            <div class="contact-email">
+                <p style="margin-bottom: 0.5rem; color: #6b7280; font-size: 0.9rem;">E-posta Adresi:</p>
+                <a href="mailto:skillupiletisim@gmail.com">skillupiletisim@gmail.com</a>
+            </div>
+            <div class="contact-info">
+                <p><strong>🕒 Çalışma Saatleri:</strong><br>Pazartesi - Cuma: 09:00 - 18:00</p>
+                <p style="margin-top: 1rem;"><strong>📍 Adres:</strong><br>Bandırma / Balıkesir, Türkiye</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="featureDetailModal" class="modal-overlay">
+        <div class="modal feature-detail-modal">
+            <span class="close-modal" onclick="closeModal('featureDetailModal')">&times;</span>
+            <div class="feature-detail-icon" id="featureIcon">🎓</div>
+            <h2 id="featureTitle">Özellik Başlığı</h2>
+            <div class="feature-detail-content" id="featureContent">
+                <p>Açıklama yükleniyor...</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="modal-overlay">
+        <div class="modal about-modal">
+            <span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>🔒 Gizlilik Politikası</h2>
+            <div class="about-content">
+                <p>SkillUp olarak gizliliğinizi ciddiye alıyoruz. Bu politika, verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar.</p>
+                
+                <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 0.5rem;"><strong>Son Güncelleme:</strong> 23 Aralık 2025</p>
+
+                <h3>📊 Toplanan Veriler</h3>
+                <p>Platform deneyiminizi iyileştirmek için aşağıdaki verileri topluyoruz:</p>
+                <ul>
+                    <li><strong>Hesap Bilgileri:</strong> Adınız, e-posta adresiniz, kullanıcı adınız</li>
+                    <li><strong>Profil Verileri:</strong> Aldığınız kurslar, ilerleme durumunuz, sertifikalarınız</li>
+                    <li><strong>Kullanım Verileri:</strong> Platform üzerindeki aktiviteleriniz, kurs izleme süreleri</li>
+                    <li><strong>Teknik Veriler:</strong> IP adresi, tarayıcı türü, cihaz bilgileri (anonim)</li>
+                    <li><strong>İletişim Verileri:</strong> Destek talepleriniz ve geri bildirimleriniz</li>
+                </ul>
+
+                <h3>🎯 Verilerin Kullanım Amacı</h3>
+                <p>Verilerinizi sadece aşağıdaki amaçlar için kullanıyoruz:</p>
+                <ul>
+                    <li><strong>Hizmet Sunumu:</strong> Kurslarınıza erişim, ilerleme takibi, sertifika oluşturma</li>
+                    <li><strong>Kişiselleştirme:</strong> Size özel kurs önerileri ve içerik sunumu</li>
+                    <li><strong>İletişim:</strong> Önemli güncellemeler, yeni içerikler hakkında bilgilendirme</li>
+                    <li><strong>Güvenlik:</strong> Hesap güvenliğinizi sağlama, dolandırıcılık önleme</li>
+                    <li><strong>İyileştirme:</strong> Platform performansını artırma, kullanıcı deneyimini geliştirme</li>
+                </ul>
+                <p style="color: #6b7280; font-size: 0.95rem; margin-top: 0.5rem;">💡 <strong>Not:</strong> Verilerinizi asla üçüncü şahıslarla paylaşmıyor veya satmıyoruz!</p>
+
+                <h3>✅ Kullanıcı Hakları</h3>
+                <p>KVKK (Kişisel Verilerin Korunması Kanunu) kapsamında şu haklara sahipsiniz:</p>
+                <ul>
+                    <li><strong>Erişim Hakkı:</strong> Hangi verilerimizin toplandığını öğrenebilirsiniz</li>
+                    <li><strong>Düzeltme Hakkı:</strong> Yanlış veya eksik bilgilerinizi güncelleyebilirsiniz</li>
+                    <li><strong>Silme Hakkı:</strong> Hesabınızı ve tüm verilerinizi tamamen silebilirsiniz</li>
+                    <li><strong>İtiraz Hakkı:</strong> Veri işleme süreçlerine itiraz edebilirsiniz</li>
+                    <li><strong>Taşıma Hakkı:</strong> Verilerinizi indirip başka platforma taşıyabilirsiniz</li>
+                </ul>
+                <p style="background: #f0f9ff; padding: 1rem; border-radius: 8px; border-left: 3px solid #22d3ee; margin-top: 1rem;">
+                    📧 Bu haklarınızı kullanmak için <strong>skillupiletisim@gmail.com</strong> adresinden bize ulaşabilirsiniz. 
+                    Taleplerinizi <strong>30 gün içinde</strong> yanıtlıyoruz.
+                </p>
+
+                <h3>🛡️ Veri Güvenliği</h3>
+                <p>Verilerinizin güvenliği bizim için öncelik. Aldığımız önlemler:</p>
+                <ul>
+                    <li><strong>SSL/TLS Şifreleme:</strong> Tüm veri aktarımları şifrelidir</li>
+                    <li><strong>Blockchain Sertifikalar:</strong> Sertifikalarınız değiştirilemez şekilde korunur</li>
+                    <li><strong>Güvenli Sunucular:</strong> Verileriniz ISO 27001 sertifikalı sunucularda saklanır</li>
+                    <li><strong>Düzenli Denetimler:</strong> Güvenlik açıkları sürekli taranır ve kapatılır</li>
+                    <li><strong>2FA Desteği:</strong> İki faktörlü kimlik doğrulama ile hesabınızı koruyabilirsiniz</li>
+                    <li><strong>Yedekleme:</strong> Verileriniz düzenli olarak yedeklenir</li>
+                </ul>
+
+                <h3>🍪 Çerezler (Cookies)</h3>
+                <p>Platform deneyiminizi iyileştirmek için çerezler kullanıyoruz:</p>
+                <ul>
+                    <li><strong>Zorunlu Çerezler:</strong> Platform çalışması için gerekli</li>
+                    <li><strong>Performans Çerezleri:</strong> Hız ve kullanılabilirlik için (anonim)</li>
+                    <li><strong>Tercih Çerezleri:</strong> Ayarlarınızı hatırlamak için</li>
+                </ul>
+                <p style="color: #6b7280; font-size: 0.95rem;">Tarayıcınızın ayarlarından çerezleri yönetebilirsiniz.</p>
+
+                <h3>👶 Çocukların Gizliliği</h3>
+                <p>Platformumuz 13 yaş ve üzeri kullanıcılar içindir. 13 yaşın altındaki kullanıcılardan bilerek veri toplamıyoruz.</p>
+
+                <h3>🔄 Politika Değişiklikleri</h3>
+                <p>Bu gizlilik politikasını zaman zaman güncelleyebiliriz. Önemli değişikliklerde sizi e-posta ile bilgilendireceğiz.</p>
+
+                <h3>📞 Bize Ulaşın</h3>
+                <p>Gizlilik konusunda sorularınız mı var?</p>
+                <p style="background: #f0f9ff; padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+                    <strong>E-posta:</strong> skillupiletisim@gmail.com<br>
+                    <strong>Adres:</strong> Bandırma / Balıkesir, Türkiye
+                </p>
+
+                <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.9rem; text-align: center;">
+                    SkillUp'ı kullanarak bu gizlilik politikasını kabul etmiş sayılırsınız. Teşekkürler! 🙏
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal-overlay">
+        <div class="modal about-modal">
+            <span class="close-modal" onclick="closeModal('termsModal')">&times;</span>
+            <h2>📜 Kullanım Koşulları</h2>
+            <div class="about-content">
+                <p>SkillUp platformunu kullanarak aşağıdaki koşulları kabul etmiş sayılırsınız. Lütfen dikkatlice okuyun!</p>
+                
+                <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 0.5rem;"><strong>Son Güncelleme:</strong> 23 Aralık 2025</p>
+
+                <h3>🎓 Hizmetin Kapsamı</h3>
+                <p>SkillUp, mikro-öğrenme odaklı bir online eğitim platformudur. Sunduğumuz hizmetler:</p>
+                <ul>
+                    <li><strong>Video İçerikler:</strong> 2-10 dakikalık dikey video formatında eğitim modülleri</li>
+                    <li><strong>İnteraktif Kurslar:</strong> Programlama, tasarım, veri bilimi, yapay zeka ve daha fazlası</li>
+                    <li><strong>Sertifika Programları:</strong> Blockchain teknolojisi ile korunan geçerli sertifikalar</li>
+                    <li><strong>Topluluk:</strong> Öğrenci ve mentor ağı, canlı etkinlikler, Q&A seansları</li>
+                    <li><strong>İlerleme Takibi:</strong> Kişiselleştirilmiş öğrenme yolları ve performans analizleri</li>
+                </ul>
+                <p style="color: #6b7280; font-size: 0.95rem; margin-top: 0.5rem;">💡 <strong>Not:</strong> Platform içerikleri sürekli güncellenir ve genişler!</p>
+
+                <h3>👤 Kullanıcı Sorumlulukları</h3>
+                <p>Platformumuzu kullanırken aşağıdaki kurallara uymanızı bekliyoruz:</p>
+                
+                <p><strong>✅ Yapmamız Gerekenler:</strong></p>
+                <ul>
+                    <li><strong>Doğru Bilgiler:</strong> Kayıt sırasında gerçek ve güncel bilgiler vermelisiniz</li>
+                    <li><strong>Hesap Güvenliği:</strong> Şifrenizi güvende tutun, başkalarıyla paylaşmayın</li>
+                    <li><strong>Saygılı İletişim:</strong> Toplulukta diğer kullanıcılara saygılı davranın</li>
+                    <li><strong>Telif Hakları:</strong> İçerikleri izin almadan kopyalamayın veya paylaşmayın</li>
+                    <li><strong>Kişisel Kullanım:</strong> Hesabınızı sadece kişisel eğitim amaçlı kullanın</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>❌ Yapmamanız Gerekenler:</strong></p>
+                <ul>
+                    <li>Platform güvenliğini tehdit etmek (hacking, virüs yayma)</li>
+                    <li>Sahte hesaplar oluşturmak veya başkası adına kayıt olmak</li>
+                    <li>İçerikleri ticari amaçla kullanmak veya satmak</li>
+                    <li>Spam, zararlı veya uygunsuz içerik paylaşmak</li>
+                    <li>Diğer kullanıcıları rahatsız etmek veya taciz etmek</li>
+                    <li>Otomatik botlar veya script'ler kullanmak</li>
+                </ul>
+
+                <p style="background: #fef2f2; padding: 1rem; border-radius: 8px; border-left: 3px solid #ef4444; margin-top: 1rem;">
+                    ⚠️ <strong>Uyarı:</strong> Bu kurallara uymayanların hesapları geçici veya kalıcı olarak askıya alınabilir.
+                </p>
+
+                <h3>📚 İçerik Kullanımı</h3>
+                <p>Platform içerikleri ile ilgili önemli bilgiler:</p>
+                
+                <p><strong>Telif Hakları:</strong></p>
+                <ul>
+                    <li>Tüm video, metin, grafik ve materyaller <strong>SkillUp'a aittir</strong></li>
+                    <li>İçerikleri sadece <strong>kişisel öğrenme</strong> amacıyla kullanabilirsiniz</li>
+                    <li>İndirme özelliği varsa, sadece <strong>çevrimdışı izleme</strong> için geçerlidir</li>
+                    <li>İçerikleri <strong>kopyalayamaz, dağıtamaz veya satamaz</strong>sınız</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Kullanıcı İçerikleri:</strong></p>
+                <ul>
+                    <li>Toplulukta paylaştığınız yorumlar, projeler ve geri bildirimler size aittir</li>
+                    <li>Ancak SkillUp'a bu içerikleri platformda kullanma hakkı vermiş olursunuz</li>
+                    <li>Paylaştığınız içeriklerin yasal ve uygun olduğundan siz sorumlusunuz</li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong>Sertifikalar:</strong></p>
+                <ul>
+                    <li>Sertifikalarınızı LinkedIn, CV ve portföyünüzde kullanabilirsiniz</li>
+                    <li>Blockchain ile doğrulanabilir, sahtecilik yapılamaz</li>
+                    <li>Sertifikayı kazanmak için kursu tamamlamanız ve sınavı geçmeniz gerekir</li>
+                </ul>
+
+                <h3>🔄 Hizmet Değişiklik Hakkı</h3>
+                <p>SkillUp, platformu sürekli geliştirmek için değişiklik yapma hakkını saklı tutar:</p>
+                
+                <p><strong>Yapabileceğimiz Değişiklikler:</strong></p>
+                <ul>
+                    <li><strong>İçerik Güncellemeleri:</strong> Yeni kurslar ekleme, mevcut içerikleri güncelleme</li>
+                    <li><strong>Özellik Değişiklikleri:</strong> Yeni özellikler ekleme, eski özellikleri kaldırma</li>
+                    <li><strong>Fiyat Değişiklikleri:</strong> Kurs fiyatlarını güncelleme (mevcut alımlarınız etkilenmez)</li>
+                    <li><strong>Tasarım Değişiklikleri:</strong> Kullanıcı arayüzünü iyileştirme</li>
+                    <li><strong>Politika Güncellemeleri:</strong> Bu koşulları zaman zaman güncelleme</li>
+                </ul>
+
+                <p style="background: #f0f9ff; padding: 1rem; border-radius: 8px; border-left: 3px solid #22d3ee; margin-top: 1rem;">
+                    📧 <strong>Bilgilendirme:</strong> Önemli değişikliklerde sizi e-posta ile bilgilendireceğiz. 
+                    Değişikliklerden sonra platformu kullanmaya devam ederseniz, yeni koşulları kabul etmiş sayılırsınız.
+                </p>
+
+                <h3>💰 Ödeme ve İptal</h3>
+                <ul>
+                    <li><strong>Ödeme:</strong> Güvenli ödeme yöntemleri (kredi kartı, banka kartı) kullanılır</li>
+                    <li><strong>İade Politikası:</strong> Satın aldığınız kursları 7 gün içinde iade edebilirsiniz</li>
+                    <li><strong>Ömür Boyu Erişim:</strong> Satın aldığınız kurslar ömür boyu sizindir</li>
+                    <li><strong>Promosyonlar:</strong> İndirim ve kampanyalar belirli koşullara bağlıdır</li>
+                </ul>
+
+                <h3>⚖️ Sorumluluk Sınırlaması</h3>
+                <ul>
+                    <li>Platform "olduğu gibi" sunulur, kesintisiz hizmet garantisi veremeyiz</li>
+                    <li>Teknik arızalar, bakım çalışmaları veya güncellemeler olabilir</li>
+                    <li>Kurs içeriklerinin sonuçlarından (iş bulma, terfi vb.) sorumlu değiliz</li>
+                    <li>İçeriklerin doğruluğunu garanti etmek için çaba gösteririz ancak hatalar olabilir</li>
+                </ul>
+
+                <h3>🚪 Hesap Sonlandırma</h3>
+                <p>Her iki taraf da hizmeti sonlandırma hakkına sahiptir:</p>
+                <ul>
+                    <li><strong>Sizin Tarafınızdan:</strong> İstediğiniz zaman hesabınızı kapatabilirsiniz</li>
+                    <li><strong>Bizim Tarafımızdan:</strong> Kurallara uymazsanız hesabınızı askıya alabiliriz</li>
+                    <li>Hesap kapatıldığında verileriniz 30 gün içinde silinir</li>
+                </ul>
+
+                <h3>📞 İletişim ve Destek</h3>
+                <p>Sorularınız veya sorunlarınız için:</p>
+                <p style="background: #f0f9ff; padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+                    <strong>E-posta:</strong> skillupiletisim@gmail.com<br>
+                    <strong>Çalışma Saatleri:</strong> Pazartesi - Cuma, 09:00 - 18:00<br>
+                    <strong>Adres:</strong> Bandırma / Balıkesir, Türkiye
+                </p>
+
+                <h3>🌍 Geçerli Hukuk</h3>
+                <p>Bu koşullar Türkiye Cumhuriyeti yasalarına tabidir. Anlaşmazlıklar Balıkesir mahkemelerinde çözülür.</p>
+
+                <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.9rem; text-align: center;">
+                    SkillUp'ı kullandığınız için teşekkür ederiz! Mutlu öğrenmeler! 🚀📚
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="careerModal" class="modal-overlay">
+        <div class="modal about-modal">
+            <span class="close-modal" onclick="closeModal('careerModal')">&times;</span>
+            <h2>🚀 Kariyer</h2>
+            <div class="about-content">
+                <p style="font-size: 1.1rem; font-weight: 600; color: #1f2937;">SkillUp ailesine katılın! 🎯</p>
+                <p>Eğitimin geleceğini birlikte inşa edelim. Mikro-öğrenme devrimi başladı ve biz bu dönüşümün öncüsüyüz!</p>
+
+                <h3>💡 SkillUp'ta Çalışmak</h3>
+                <p>SkillUp, <strong>teknoloji ve eğitimi</strong> harmanlayan, yenilikçi bir <strong>start-up</strong> ekosistemidir. Biz sadece bir platform değil, öğrenmeyi yeniden tanımlayan bir <strong>hareket</strong>iz!</p>
+                
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-number" style="font-size: 1.5rem;">🌟</div>
+                        <div class="stat-label">Dinamik Ekip</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" style="font-size: 1.5rem;">🚀</div>
+                        <div class="stat-label">Hızlı Büyüme</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" style="font-size: 1.5rem;">💻</div>
+                        <div class="stat-label">Teknoloji Odaklı</div>
+                    </div>
+                </div>
+
+                <h3>🎨 Neler Sunuyoruz?</h3>
+                <ul>
+                    <li><strong>Esnek Çalışma:</strong> Remote/hibrit çalışma modelleri, kendi programını kendin belirle</li>
+                    <li><strong>Gelişim Fırsatları:</strong> Tüm kurslara ücretsiz erişim, konferanslar, workshop'lar</li>
+                    <li><strong>Yenilikçi Ortam:</strong> En son teknolojilerle çalış, fikirlerini özgürce paylaş</li>
+                    <li><strong>Start-up Kültürü:</strong> Hiyerarşi yok, herkes lider, herkes öğrenen</li>
+                    <li><strong>Rekabetçi Ücret:</strong> Performans bonusları, hisse senedi opsiyonları</li>
+                    <li><strong>Sosyal Faydalar:</strong> Sağlık sigortası, spor salonu üyeliği, ekip etkinlikleri</li>
+                </ul>
+
+                <h3>👥 Açık Pozisyonlar</h3>
+                <p>Şu anda aşağıdaki pozisyonlar için yetenekli kişiler arıyoruz:</p>
+                
+                <div style="background: #f9fafb; padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border-left: 4px solid #8b5cf6;">
+                    <h4 style="color: #1f2937; margin-bottom: 0.5rem; font-size: 1.1rem;">💻 Frontend Developer</h4>
+                    <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 0.5rem;"><strong>Lokasyon:</strong> Remote / Bandırma</p>
+                    <p style="color: #4b5563; line-height: 1.6;">
+                        Modern web teknolojileri ile kullanıcı arayüzleri geliştirmek için arıyoruz. 
+                        React, Next.js, TypeScript deneyimi olan, mobil-first düşünen, performans ve UX takıntılı geliştiriciler bekliyoruz!
+                    </p>
+                    <p style="margin-top: 0.5rem; color: #6b7280; font-size: 0.9rem;">
+                        <strong>Aranan:</strong> React, TypeScript, Tailwind CSS, Responsive Design
+                    </p>
+                </div>
+
+                <div style="background: #f9fafb; padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border-left: 4px solid #22d3ee;">
+                    <h4 style="color: #1f2937; margin-bottom: 0.5rem; font-size: 1.1rem;">🤖 AI / Data Intern</h4>
+                    <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 0.5rem;"><strong>Lokasyon:</strong> Remote / Hybrid</p>
+                    <p style="color: #4b5563; line-height: 1.6;">
+                        Yapay zeka ve veri bilimi konusunda tutkulu, öğrenmeye açık stajyer arıyoruz. 
+                        Kişiselleştirilmiş öğrenme algoritmaları, öneri sistemleri ve öğrenci davranış analizleri üzerinde çalışacaksınız.
+                    </p>
+                    <p style="margin-top: 0.5rem; color: #6b7280; font-size: 0.9rem;">
+                        <strong>Aranan:</strong> Python, Machine Learning, Pandas, TensorFlow/PyTorch temel bilgisi
+                    </p>
+                </div>
+
+                <div style="background: #f9fafb; padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border-left: 4px solid #fbbf24;">
+                    <h4 style="color: #1f2937; margin-bottom: 0.5rem; font-size: 1.1rem;">🎥 Content Creator</h4>
+                    <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 0.5rem;"><strong>Lokasyon:</strong> Remote</p>
+                    <p style="color: #4b5563; line-height: 1.6;">
+                        Dikey video formatında eğitim içerikleri üreten, kamera önünde rahat, anlatım yeteneği güçlü içerik üreticileri arıyoruz. 
+                        TikTok tarzı, akıcı ve eğlenceli mikro-öğrenme videoları hazırlayacaksınız.
+                    </p>
+                    <p style="margin-top: 0.5rem; color: #6b7280; font-size: 0.9rem;">
+                        <strong>Aranan:</strong> Video düzenleme, storytelling, social media trend bilgisi, kamera rahatlığı
+                    </p>
+                </div>
+
+                <h3>📩 Nasıl Başvurabilirsiniz?</h3>
+                <p>Ekibimize katılmak için bize ulaşın! CV'nizi, portföyünüzü ve neden SkillUp'ta çalışmak istediğinizi anlatan bir motivasyon mektubunu gönderin.</p>
+                
+                <div style="background: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%); padding: 2rem; border-radius: 16px; text-align: center; margin: 2rem 0; color: white;">
+                    <h4 style="color: white; margin-bottom: 1rem; font-size: 1.3rem;">🚀 Hadi Başlayalım!</h4>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.05rem;">Geleceğin eğitim platformunu birlikte inşa edelim!</p>
+                    <p style="font-size: 1.1rem; font-weight: 700;">📧 skillupiletisim@gmail.com</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">Konu: Kariyer - [Pozisyon Adı]</p>
+                </div>
+
+                <p style="color: #6b7280; font-size: 0.9rem; text-align: center; font-style: italic;">
+                    "Öğrenmeyi seviyorsanız, doğru yerdesiniz!" 💜
+                </p>
+
+                <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.9rem; text-align: center;">
+                    SkillUp eşit fırsat işverenidir. Farklılıkları kucaklıyor, çeşitliliği destekliyoruz! 🌈
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="JavaScript/script.js"></script>
+</body>
+</html>
